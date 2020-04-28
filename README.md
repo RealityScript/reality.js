@@ -1,4 +1,4 @@
-<div style="height: 320px; text-align: center; background-color: #FC4C4C;">
+<div style="width:1000px; height: 320px; text-align: center; background-color: #FC4C4C; border-radius:20px;">
 	<a href="https://RealityScript.io"><img src="https://realityscript.io/images/rs_logo_large.png" width="320" height="320" alt="RealityScript" title="RealityScript" /></a>
 </div>
 
@@ -7,9 +7,9 @@
 </p>
 
 
-## Intro 
+## Intro: 
 
-The RealityScript project 
+<strong>The RealityScript project</strong>
 
 An open-source Web Component (Reality-Tag: <reality>) and Javascript Library (Reality.js) for embedding native Augmented Reality on the mobile web - unifying Apple's 'AR Quick Look' method and Google's 'Model-Viewer/Scene-Viewer' method under one shared code method. 
 
@@ -49,9 +49,7 @@ This method assumes a specific folder & file layout convention, called the ‘as
 
 Once you have uploaded your asset files, you only then need to include the the 'asset group shortcut' URL for the Reality-Tag's 'src' attribute to implement RealityScript with the minimum usage. 
 
-Example: 
-
-<reality src="https://realitymaker.io/test/robot"></reality>
+Example: <a href="https://realityscript.io/example-short.html" target="_blank">Demo</a>
 
 ```html
 <reality src="https://realitymaker.io/test/robot"></reality>
@@ -68,22 +66,7 @@ Support for .jpeg, .png, .reality and .glb is planned for a future release howev
 
 The full-tag method uses attributes for customisation and layout. The following example lists each of the current attributes available. 
 
-Example: 
-
-<reality title="Robot" 
-	 image="https://realityscript.io/examples/robot/image/robot.jpg"
-	 model-ios="https://realityscript.io/examples/robot/ios/robot.usdz" 
-	 model-android="https://realityscript.io/examples/robot/android/robot.gltf"
-	 display-image="yes" 
-	 display-instructions="yes"
-	 display-editorial="yes"
-	 box-width="400"
-	 box-height="400"
-	 box-radius="40" 
-	 box-margin="20"
-	 box-background-color="#CF2F33"
-	 box-size="" >
-</reality>
+Example: <a href="https://realityscript.io/example-full.html" target="_blank">Demo</a>
 
 ```html
 <reality title="Robot" 
@@ -151,7 +134,7 @@ As long as you provide the full-path to the group folder, Reality.js can obtain 
 This URL is then set to the 'src' attribute of the Reality-Tag instead of using the attributes.. 'model-ios', 'model-android' and 'image'.
 
 
-// Compatible asset file formats 
+## Compatible asset file formats 
 
 Use the following file formats for your media assets in order for RealityScript to be compatible with both iOS and Android. 
 
