@@ -69,6 +69,9 @@ function getMobileOperatingSystem() {
 function getScripts(scriptName){
 	
 	if(scriptName === "Model-Viewer"){
+		
+		// Current Model-Viewer version suppoerted 
+		var modelViewerVersion = '0.10.0';
 
 		// Get Model-Viewer/Scene-Viewer (needed for access to Android's ARCore web API)
 		if(scripts.indexOf(scriptName) < 0){
@@ -76,13 +79,13 @@ function getScripts(scriptName){
 			// Import Model-Viewer script
 			var modelViewerImport = document.createElement('script');
 			modelViewerImport.type = 'module';
-			modelViewerImport.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.js';
+			modelViewerImport.src = 'https://unpkg.com/@google/model-viewer@'+modelViewerVersion+'/dist/model-viewer.js';
 			document.head.appendChild(modelViewerImport);
 
 			// Import Model-Viewer legacy script
 			var modelViewerImport_noModule = document.createElement('script');
 			modelViewerImport_noModule.setAttribute('nomodule', true);
-			modelViewerImport_noModule.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js';
+			modelViewerImport_noModule.src = 'https://unpkg.com/@google/model-viewer@'+modelViewerVersion+'/dist/model-viewer-legacy.js';
 			document.head.appendChild(modelViewerImport_noModule);
 
 			scripts.push(scriptName);
@@ -317,7 +320,6 @@ function setup(){
 					}
 					aTag.appendChild(imgTag);
 				}
-				
 			}
 			
 		} else if(oS === "Android") {
