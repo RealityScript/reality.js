@@ -159,7 +159,7 @@ Without an ARKit or ARCore enabled device, RealityScript will not be able to pre
 
 I'd like to start this section by pointing out that RealityScript is an open-source project with an 'Augmented Reality first' focus on native Web-AR and can not be compared directly with Model-Viewer, which has a similar but different goal. With that in mind, RealityScript's default attributes have, by design, the explicit consideration of being 'Augmented Reality first'.
 
-RealityScript actually makes good use of Model-Viewer when the user scenario requires it - and for all Android usage, for which RealityScript could not exist without it. Model-Viewer is an excellent component and the team do a great job with the project and the community, for which I am particularly grateful for.. thank you! 
+RealityScript actually makes good use of Model-Viewer when the user scenario requires it - and currently for all Android usage, for which RealityScript currently relies on it. Model-Viewer is an excellent component and the team do a great job with the project and the community, for which I am particularly grateful for.. thank you! 
 
 RealityScript offers several unique features including a 'short-tag', one-line-of-code implementation for simple embedding of native AR on mobile web pages. 
 
