@@ -34,10 +34,16 @@ var realityObject = {
 	modelImageUrl: "",
 	modelUrl: ""
 };
-	
+
+// Some global vars
+var oS;
+
+// An array for storing the names (strings) of any scripts that were needed and imported 
+var scripts = [];
+
 // Get the mobile OS
 function getMobileOperatingSystem() {
-	
+
 	// Get user agent 
 	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -59,27 +65,52 @@ function getMobileOperatingSystem() {
 	return "unknown";
 }
 
-// Get the external scripts required for [Android] Model-Viewer/Scene-Viewer (needed for access to Android's ARCore web API)
-function getScripts(){
+// Get other scripts
+function getScripts(scriptName){
 	
-	// Import Model-Viewer script
-	var modelViewerImport = document.createElement('script');
-	modelViewerImport.type = 'module';
-	modelViewerImport.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.js';
-	document.head.appendChild(modelViewerImport);
+	if(scriptName === "Model-Viewer"){
 
-	// Import Model-Viewer legacy script
-	var modelViewerImport_noModule = document.createElement('script');
-	modelViewerImport_noModule.setAttribute('nomodule', true);
-	modelViewerImport_noModule.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js';
-	document.head.appendChild(modelViewerImport_noModule);
+		// Get Model-Viewer/Scene-Viewer (needed for access to Android's ARCore web API)
+		if(scripts.indexOf(scriptName) < 0){
+
+			// Import Model-Viewer script
+			var modelViewerImport = document.createElement('script');
+			modelViewerImport.type = 'module';
+			modelViewerImport.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.js';
+			document.head.appendChild(modelViewerImport);
+
+			// Import Model-Viewer legacy script
+			var modelViewerImport_noModule = document.createElement('script');
+			modelViewerImport_noModule.setAttribute('nomodule', true);
+			modelViewerImport_noModule.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js';
+			document.head.appendChild(modelViewerImport_noModule);
+
+			scripts.push(scriptName);
+
+		} else {
+			// Already have Model-Viewer
+		}
+	}
+}
+
+function checkScriptRequirementsForElement(realityElement){
+	
+	// Get other scripts for Android 
+	// (And iOS only if user wants to display a 3D preview before entering AR
+	if(oS === "Android"){
+		getScripts('Model-Viewer');
+	} else if(oS === "unknown" || (oS === "iOS" && realityElement.getAttribute('display-image')) && realityElement.getAttribute('display-image') === "no"){
+		getScripts('Model-Viewer');
+	} else {
+		// Model-Viewer is not needed in this instance so no need to import it
+	}
 }
 
 // Setup the components
 function setup(){
 	
 	// Detect the device OS
-	var oS = getMobileOperatingSystem();
+	oS = getMobileOperatingSystem();
 	
 	// Get the reality-tags 
 	var realityElements = document.getElementsByTagName("reality");
@@ -90,6 +121,9 @@ function setup(){
 		// Get the reality-tag element
 		var realityElement = realityElements[i];
 		
+		// Check if the element requires any other scripts 
+		checkScriptRequirementsForElement(realityElement);
+		
 		// Set some style options for the HTML preview box
 		var boxWidth = '300px';
 		var boxHeight = '300px';
@@ -98,14 +132,14 @@ function setup(){
 		var boxMargin = "20px";
 		
 		// Configure some quick-sizing defaults
-		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') == "small"){
+		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') === "small"){
 			boxWidth = '300px';
 			boxHeight = '300px';
 			boxBorderRadius = '20px';
 			boxMargin = "20px";
 		} 
 		
-		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') == "medium"){
+		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') === "medium"){
 			
 			if(window.innerWidth >= 1160){
 				boxWidth = (window.innerWidth/4) + 'px';
@@ -130,7 +164,7 @@ function setup(){
 			}
 		} 
 		
-		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') == "large"){
+		if(realityElement.getAttribute('size') && realityElement.getAttribute('size') === "large"){
 			
 			if(window.innerWidth < window.innerHeight){
 				boxWidth = (window.innerWidth) + 'px';
@@ -179,6 +213,10 @@ function setup(){
 			realityObject.modelImageUrl = realityElement.getAttribute('image');
 			realityObject.modelUrl = realityElement.getAttribute('model-ios');
 			
+			// If 'reality dev' wants to display a 3D preview on iOS before entering AR
+			// Note: Expecting support for a native 3D preview by default on iOS in the near future 
+			var previewModelUrl;
+			
 			// If the folder-path convention is used
 			if(realityElement.getAttribute('src') && realityElement.getAttribute('src') !== ""){
 				
@@ -190,7 +228,6 @@ function setup(){
 				
 				// Check to see if the dev added a slash and remove it if so
 				if(lastChar === '/'){
-					console.log("path adjust");
 					path = path.slice(0, path.length-1) + path.slice(path.length);
 				}
 				
@@ -212,32 +249,77 @@ function setup(){
 					var nameCapitalized = assetName.charAt(0).toUpperCase() + assetName.slice(1);
 					realityObject.modelTitle = nameCapitalized;
 				}
-			} 
-			
-			// Create a link
-			var aTag = document.createElement('a');
-			aTag.setAttribute('href', realityObject.modelUrl);
-			aTag.setAttribute('rel', "ar");
-			aTag.setAttribute('style', "width:100%; height:100%; display:block; border-radius: "+boxBorderRadius+"; overflow: hidden;");
-			aTag.innerText = "";
-			realityPreviewElement.appendChild(aTag);
-
-			// Create a preview image
-			if(realityObject.modelImageUrl){ 
-				var imgTag = document.createElement('img');
-				imgTag.setAttribute('width', boxWidth);
-				imgTag.setAttribute('height', boxHeight);
-				if(realityObject.modelTitle){ 
-					imgTag.setAttribute('alt', realityObject.modelTitle);
-					imgTag.setAttribute('title', realityObject.modelTitle);
+				
+				// If 'reality dev' wants to display a 3D preview on iOS before entering AR
+				// Note: Expecting support for a native 3D preview by default on iOS in the near future
+				if(realityElement.getAttribute('display-image') && realityElement.getAttribute('display-image') === "no"){
+					if(realityElement.getAttribute('model-android') && realityElement.getAttribute('model-android') !== ""){
+						previewModelUrl = realityElement.getAttribute('model-android');
+					} else {
+						previewModelUrl = path + '/android/' + assetName + '.gltf';
+					}
 				}
-				imgTag.setAttribute('style', "border:0; border-radius: "+boxBorderRadius+";");
-				if(realityObject.modelImageUrl){ 
-					imgTag.src = realityObject.modelImageUrl; 
+				
+			}  else {
+				
+				// If 'reality dev' wants to display a 3D preview on iOS before entering AR
+				// Note: Expecting support for a native 3D preview by default on iOS in the near future
+				if(realityElement.getAttribute('display-image') && realityElement.getAttribute('display-image') === "no"){
+					previewModelUrl = realityElement.getAttribute('model-android');
 				}
-				aTag.appendChild(imgTag);
 			}
+			
+			if(previewModelUrl && previewModelUrl !== ""){
 
+				// Use Model-Viewer for iOS only if the 'reality dev' has set the 'display-image' attribute to 'no' as we'll need to display something and can assume a 3D preview would be fine 
+				// Note: Expecting support for a native 3D preview by default on iOS in the near future 
+				
+				// Create a model-viewer component
+				var mvTag = document.createElement('model-viewer');
+				mvTag.setAttribute('style', "width:100%; height:100%; border:0; border-radius: "+boxBorderRadius+"; overflow: hidden;");
+				mvTag.setAttribute('src', previewModelUrl);
+				mvTag.setAttribute('alt', realityObject.modelTitle);
+				mvTag.setAttribute('ar', true);
+				mvTag.setAttribute('shadow-intensity', "1");
+				mvTag.setAttribute('camera-controls', true);
+				mvTag.setAttribute('magic-leap', true);
+				mvTag.setAttribute('autoplay', true);
+				mvTag.setAttribute('background-color',"#ececec");
+				mvTag.setAttribute('reveal', "auto");
+				mvTag.setAttribute('ar-modes', "quick-look");
+				mvTag.setAttribute('quick-look-browsers', "safari chrome");
+				mvTag.setAttribute('ios-src', realityObject.modelUrl);
+
+				realityPreviewElement.appendChild(mvTag);
+				
+			} else {
+				
+				// Create a link
+				var aTag = document.createElement('a');
+				aTag.setAttribute('href', realityObject.modelUrl);
+				aTag.setAttribute('rel', "ar");
+				aTag.setAttribute('style', "width:100%; height:100%; display:block; border-radius: "+boxBorderRadius+"; overflow: hidden;");
+				aTag.innerText = "";
+				realityPreviewElement.appendChild(aTag);
+
+				// Create a preview image
+				if(realityObject.modelImageUrl){ 
+					var imgTag = document.createElement('img');
+					imgTag.setAttribute('width', boxWidth);
+					imgTag.setAttribute('height', boxHeight);
+					if(realityObject.modelTitle){ 
+						imgTag.setAttribute('alt', realityObject.modelTitle);
+						imgTag.setAttribute('title', realityObject.modelTitle);
+					}
+					imgTag.setAttribute('style', "border:0; border-radius: "+boxBorderRadius+";");
+					if(realityObject.modelImageUrl){ 
+						imgTag.src = realityObject.modelImageUrl; 
+					}
+					aTag.appendChild(imgTag);
+				}
+				
+			}
+			
 		} else if(oS === "Android") {
 
 			// Construct reality object
@@ -256,7 +338,6 @@ function setup(){
 				
 				// Check to see if the dev added a slash and remove it if so
 				if(lastChar === '/'){
-					console.log("path adjust");
 					path = path.slice(0, path.length-1) + path.slice(path.length);
 				}
 				
@@ -319,7 +400,6 @@ function setup(){
 				
 				// Check to see if the dev added a slash and remove it if so
 				if(lastChar === '/'){
-					console.log("path adjust");
 					path = path.slice(0, path.length-1) + path.slice(path.length);
 				}
 				
@@ -412,7 +492,7 @@ function setup(){
 		realityElementSubtitleLabel.innerHTML = realityObject.subtitle;
 		
 		// Configure overlay optionals
-		if(realityElement.getAttribute('display-editorial') && realityElement.getAttribute('editorial') !== "no"){
+		if(realityElement.getAttribute('display-editorial') && realityElement.getAttribute('display-editorial') !== "no"){
 			realityElementEditorialContainer.appendChild(realityElementEditorialLable);
 		} 
 		
@@ -433,7 +513,7 @@ function setup(){
 
 // Let's go!
 window.onload = function () {
+	
 	// Begin setup
-	getScripts();
 	setup();
 };
