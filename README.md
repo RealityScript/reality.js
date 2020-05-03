@@ -17,6 +17,8 @@ An open-source Web Component (Reality-Tag: <reality>) and Javascript Library (Re
 
 - Example (full-tag method): <a href="https://realityscript.io/example-full.html" target="_blank">Demo</a>
 
+- Example (iOS usage with and without Model-Viewer preview): <a href="https://realityscript.io/example-ios-mixed.html" target="_blank">Demo</a>
+
 
 ## Description 
 
@@ -52,7 +54,7 @@ Once you have uploaded your asset files, you only then need to include the the '
 Example: <a href="https://realityscript.io/example-short.html" target="_blank">Demo</a>
 
 ```html
-<reality src="https://realitymaker.io/test/robot"></reality>
+<reality src="https://realityscript.io/examples/corgi"></reality>
 ```
 
 Reality.js will generate the full asset paths from the 'asset group shortcut' URL. 
@@ -81,7 +83,7 @@ Example: <a href="https://realityscript.io/example-full.html" target="_blank">De
 	 box-radius="40" 
 	 box-margin="20"
 	 box-background-color="#CF2F33"
-	 box-size="" >
+	 size="" >
 </reality>
 ```
 
@@ -129,7 +131,7 @@ The 'asset group shortcut' relies on the following file naming and folder layout
 
 - All three of the asset folders, 'ios', 'android' and 'image', must together reside inside one parent group folder named whatever you chose as the shared file name e.g. if your shared file name was 'robot', than your group folder would also be named 'robot'. In this case, your the path to your image would be 'robot/image/robot.jpg', the path to your Android model would be 'robot/android/robot.gltf' and the path to your iOS model would be 'robot/ios/robot.usdz'. The 'robot' group folder can then reside on any server, in any directory or sub-directly. 
 
-As long as you provide the full-path to the group folder, Reality.js can obtain the files eg. 'https://realityscript/examples/robot' could be used as an asset group shortcut URL and so could 'https://realityscript/robot' and 'https://realityscript/examples/3dmodels/robot' depending on where the group folder were uploaded to. 
+As long as you provide the full-path to the group folder, Reality.js can obtain the files eg. 'https://realityscript.io/examples/robot' could be used as an asset group shortcut URL and so could 'https://realityscript.io/robot' and 'https://realityscript.io/examples/3dmodels/robot' depending on where the group folder were uploaded to. 
 
 This URL is then set to the 'src' attribute of the Reality-Tag instead of using the attributes.. 'model-ios', 'model-android' and 'image'.
 
@@ -150,6 +152,27 @@ Use the following file formats for your media assets in order for RealityScript 
 RealityScript explicitly requires the availability of ARKit or ARCore, respectively on an end-user’s iOS or Android device to work. 
 
 Without an ARKit or ARCore enabled device, RealityScript will not be able to present any AR experience and instead, will display a message to the user suggesting that they re-visit with a compatible device.
+
+
+## How does RealityScript differ from Model-Viewer 
+(Added by request of Twitter user @____herbst and discussions with Twitter user's @karanganesan and @roadtoros) 
+
+I'd like to start this section by pointing out that RealityScript is an open-source project with an 'Augmented Reality first' focus on native Web-AR and can not be compared directly with Model-Viewer, which has a similar but different goal. With that in mind, RealityScript's default attributes have, by design, the explicit consideration of being 'Augmented Reality first'.
+
+RealityScript actually makes good use of Model-Viewer when the user scenario requires it - and for all Android usage, for which RealityScript could not exist without it. Model-Viewer is an excellent component and the team do a great job with the project and the community, for which I am particularly grateful for.. thank you! 
+
+RealityScript offers several unique features including a 'short-tag', one-line-of-code implantation for simple embedding of native AR on mobile web pages. 
+
+In addition, RealityScript supports extended functionality with a few (currently small with more in the works) overlay-display templates. 
+These currently include: Styles for box display design, clear user instructions and an editorial note. 
+
+For iOS usage, RealityScript does not require the Model-Viewer component or it's library unless the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
+
+RealityScript's development roadmap includes better support for .reality files, more functionality for AR Quick Look and further additions to feature-set of overlay-displays and design options - with full consideration to the mission of being an 'Augmented Reality first' component. 
+
+It is also worth mentioning that on iOS, Model-Viewer will not use the AR Quick Look web componant by default and this may not be designed by the developer. RealityScript offers the developer the choice option, to use the AR Quick Look web component or the Model-Viewer web component and [on iOS] defaults to the former rather than the latter. 
+
+If an 'Augmented Reality first' component is not your requirement and you have no desire for any of the RealityScript style & functionality additions, Model-Viewer may be a better choice for your project. (Read more at https://modelviewer.dev)
 
 
 ## What about non ARKit and ARCore devices 
