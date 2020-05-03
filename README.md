@@ -161,14 +161,14 @@ I'd like to start this section by pointing out that RealityScript is an open-sou
 
 RealityScript actually makes good use of Model-Viewer when the user scenario requires it - and for all Android usage, for which RealityScript could not exist without it. Model-Viewer is an excellent component and the team do a great job with the project and the community, for which I am particularly grateful for.. thank you! 
 
-RealityScript offers several unique features including a 'short-tag', one-line-of-code implantation for simple embedding of native AR on mobile web pages. 
+RealityScript offers several unique features including a 'short-tag', one-line-of-code implementation for simple embedding of native AR on mobile web pages. 
 
 In addition, RealityScript supports extended functionality with a few (currently small with more in the works) overlay-display templates. 
 These currently include: Styles for box display design, clear user instructions and an editorial note. 
 
 For iOS usage, RealityScript does not require the Model-Viewer component or it's library unless the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
 
-RealityScript's development roadmap includes better support for .reality files, more functionality for AR Quick Look and further additions to feature-set of overlay-displays and design options - with full consideration to the mission of being an 'Augmented Reality first' component. 
+RealityScript's development roadmap includes better support for .reality files, more functionality for AR Quick Look and further additions to the feature-set of overlay-displays and design options - with full consideration to the mission of being an 'Augmented Reality first' component. 
 
 It is also worth mentioning that on iOS, Model-Viewer will not use the AR Quick Look web componant by default and this may not be designed by the developer. RealityScript offers the developer the choice option, to use the AR Quick Look web component or the Model-Viewer web component and [on iOS] defaults to the former rather than the latter. 
 
