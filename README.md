@@ -172,7 +172,7 @@ RealityScript's development roadmap includes better support for .reality files, 
 
 It is also worth mentioning that on iOS, Model-Viewer will not use the AR Quick Look web componant by default and this may not be designed by the developer. RealityScript offers the developer the choice option, to use the AR Quick Look web component or the Model-Viewer web component and [on iOS] defaults to the former rather than the latter. 
 
-If an 'Augmented Reality first' component is not your requirement and you have no desire for any of the RealityScript style & functionality additions, Model-Viewer may be a better choice for your project. (Read more at https://modelviewer.dev)
+If an 'Augmented Reality first' component is not your requirement and you have no desire for any of the RealityScript style and functionality additions, Model-Viewer may be a better choice for your project (read more at https://modelviewer.dev). On the contrary however, if you feel that a more simple implimentation for AR and/or think that the style and functionality additions will add value to your project then RealityScript could be for you. 
 
 
 ## What about non ARKit and ARCore devices 
