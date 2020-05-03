@@ -71,10 +71,10 @@ The full-tag method uses attributes for customisation and layout. The following 
 Example: <a href="https://realityscript.io/example-full.html" target="_blank">Demo</a>
 
 ```html
-<reality title="Robot" 
-	 image="https://realityscript.io/examples/robot/image/robot.jpg"
-	 model-ios="https://realityscript.io/examples/robot/ios/robot.usdz" 
-	 model-android="https://realityscript.io/examples/robot/android/robot.gltf"
+<reality title="Corgi" 
+	 image="https://realityscript.io/examples/corgi/image/corgi.jpg"
+	 model-ios="https://realityscript.io/examples/corgi/ios/corgi.usdz" 
+	 model-android="https://realityscript.io/examples/corgi/android/corgi.gltf"
 	 display-image="yes" 
 	 display-instructions="yes"
 	 display-editorial="yes"
@@ -121,17 +121,17 @@ Note: To use the 'asset group shortcut', you must only provide the following fil
 
 The 'asset group shortcut' relies on the following file naming and folder layout convention: 
 
-- Choose a single, shared file name for all three of the asset files e.g. robot.usdz, robot.gltf and robot.jpg  
+- Choose a single, shared file name for all three of the asset files e.g. corgi.usdz, corgi.gltf and corgi.jpg  
 
-- The .usdz file must reside inside a folder named 'ios' eg. the path would be: ios/robot.usdz
+- The .usdz file must reside inside a folder named 'ios' eg. the path would be: ios/corgi.usdz
 
-- The .gltf file must reside inside a folder named 'android' eg. the path would be: android/robot.gltf
+- The .gltf file must reside inside a folder named 'android' eg. the path would be: android/corgi.gltf
 
-- The .jpg file must reside inside a folder named 'image' eg. the path would be: image/robot.jpg 
+- The .jpg file must reside inside a folder named 'image' eg. the path would be: image/corgi.jpg 
 
-- All three of the asset folders, 'ios', 'android' and 'image', must together reside inside one parent group folder named whatever you chose as the shared file name e.g. if your shared file name was 'robot', than your group folder would also be named 'robot'. In this case, your the path to your image would be 'robot/image/robot.jpg', the path to your Android model would be 'robot/android/robot.gltf' and the path to your iOS model would be 'robot/ios/robot.usdz'. The 'robot' group folder can then reside on any server, in any directory or sub-directly. 
+- All three of the asset folders, 'ios', 'android' and 'image', must together reside inside one parent group folder named whatever you chose as the shared file name e.g. if your shared file name was 'corgi', than your group folder would also be named 'corgi'. In this case, the path to your image would be 'corgi/image/corgi.jpg', the path to your Android model would be 'corgi/android/corgi.gltf' and the path to your iOS model would be 'corgi/ios/corgi.usdz'. The 'corgi' group folder can then reside on any server, in any directory or sub-directly. 
 
-As long as you provide the full-path to the group folder, Reality.js can obtain the files eg. 'https://realityscript.io/examples/robot' could be used as an asset group shortcut URL and so could 'https://realityscript.io/robot' and 'https://realityscript.io/examples/3dmodels/robot' depending on where the group folder were uploaded to. 
+As long as you provide the full-path to the group folder, Reality.js can obtain the files eg. 'https://realityscript.io/examples/corgi' could be used as an asset group shortcut URL and so could 'https://realityscript.io/corgi' and 'https://realityscript.io/examples/3dmodels/corgi' depending on where the group folder were uploaded to. 
 
 This URL is then set to the 'src' attribute of the Reality-Tag instead of using the attributes.. 'model-ios', 'model-android' and 'image'.
 
