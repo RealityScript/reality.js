@@ -1,6 +1,6 @@
-<div style="width:1000px; height: 320px; text-align: center; background-color: #FC4C4C; border-radius:20px;">
-	<a href="https://RealityScript.io"><img src="https://realityscript.io/images/rs_logo_large.png" width="320" height="320" alt="RealityScript" title="RealityScript" /></a>
-</div>
+<p align="center" style="background-color: #FC4C4C; border-radius:20px;">
+	<a href="https://RealityScript.io"><img style="border-radius:20px;"  src="https://realityscript.io/images/rs_logo_large.png" width="320" height="320" alt="RealityScript" title="RealityScript" /></a>
+</p>
 
 <p align="center">
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ProjectDent/ARKit-CoreLocation.svg" alt="MIT License"></a>
@@ -11,7 +11,7 @@
 
 <strong>The RealityScript project</strong>
 
-An open-source Web Component (Reality-Tag: <reality>) and Javascript Library (Reality.js) for embedding native Augmented Reality on the mobile web - unifying Apple's 'AR Quick Look' method and Google's 'Model-Viewer/Scene-Viewer' method under one shared code method. 
+An open-source Web Component (Reality-Tag: `<reality>`) and Javascript Library (Reality.js) for embedding native Augmented Reality on the mobile web - unifying Apple's 'AR Quick Look' method and Google's 'Model-Viewer/Scene-Viewer' method under one shared code method. 
 
 - Example (short-tag method): <a href="https://realityscript.io/example-short.html" target="_blank">Demo</a>
 
