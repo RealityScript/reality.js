@@ -1,9 +1,9 @@
-<p align="center" style="background-color: #FC4C4C; border-radius:20px;">
-	<a href="https://RealityScript.io"><img style="border-radius:20px;"  src="https://realityscript.io/images/rs_logo_large.png" width="320" height="320" alt="RealityScript" title="RealityScript" /></a>
+<p align="center">
+	<a href="https://RealityScript.io"><img src="https://realityscript.io/images/rs_logo_large_rounded.png" width="320" height="320" alt="RealityScript" title="RealityScript" /></a>
 </p>
 
 <p align="center">
-    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ProjectDent/ARKit-CoreLocation.svg" alt="MIT License"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://realityscript.io/images/license.svg" alt="MIT License"></a>
 </p>
 
 
