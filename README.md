@@ -98,9 +98,11 @@ It is also on display in Model-Viewer's UI.
 
 - The Reality-Tag's 'model-android' attribute is the path URL for the 3D model required for Android and Model-Viewer/Scene-Viewer. 
 
-- The Reality-Tag's 'display-image' attribute can be set to 'yes' or 'no'. This will determine whether or not the preview image will be displayed when viewed in any way other than AR Quick Look (AR Quick Look currently requires an image preview).
-
 - The Reality-Tag's 'display-instructions' attribute can be set to 'yes' or 'no'. This will determine whether or not some end-user instructions will be displayed on top of the preview box. 
+
+- The Reality-Tag's 'display-model-viewer' attribute can be set to 'yes' or 'no'. This will determine whether or not a 3D model will be displayed using the Model-Viewer component.
+
+- The Reality-Tag's 'display-image' attribute can be set to 'yes' or 'no'. This will determine whether or not the preview image will be displayed when using the 'Model-Viewer' component option.
 
 - The Reality-Tag's 'box-width' attribute can be set to any number correlating with the number of pixels you would like to use for the width of the preview box. 
 
@@ -144,7 +146,7 @@ Use the following file formats for your media assets in order for RealityScript 
 
 - For iOS, AR Quick Look: .usdz or .reality 
 
-- For Android, Model-Viewer/Scene-Viewer: .gltf or .glb
+- For Android, Scene-Viewer: .gltf or .glb
 
 - For the preview image: .jpg or .png
 
@@ -166,11 +168,9 @@ RealityScript offers several unique features including a 'short-tag', one-line-o
 In addition, RealityScript supports extended functionality with a few (currently small with more in the works) overlay-display templates. 
 These currently include: Styles for box display design, clear user instructions and an editorial note. 
 
-RealityScript can use the Model-Viewer component if the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
+RealityScript can display the Model-Viewer component if the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
 
 RealityScript's development roadmap includes better support for .reality files, more functionality for AR Quick Look and further additions to the feature-set of overlay-displays and design options - with full consideration to the mission of being an 'Augmented Reality first' component. 
-
-It is also worth mentioning that on iOS, Model-Viewer will not use the AR Quick Look web componant by default and this may not be designed by the developer. RealityScript offers the developer the choice option, to use the AR Quick Look web component or the Model-Viewer web component and [on iOS] defaults to the former rather than the latter. 
 
 If an 'Augmented Reality first' component is not your requirement and you have no desire for any of the RealityScript style and functionality additions, Model-Viewer may be a better choice for your project (read more at https://modelviewer.dev). On the contrary however, if you feel that a more simple implimentation for AR and/or think that the style and functionality additions will add value to your project then RealityScript could be for you. 
 
