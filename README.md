@@ -13,18 +13,18 @@
 
 <strong>The RealityScript project</strong>
 
-An open-source Web Component (Reality-Tag: `<reality>`) and Javascript Library (Reality.js) for embedding native Augmented Reality on the mobile web - unifying Apple's 'AR Quick Look' method and Google's 'Model-Viewer/Scene-Viewer' method under one shared code method. 
+An open-source Web Component (Reality-Tag: `<reality>`) and Javascript Library (Reality.js) for embedding native Augmented Reality on the mobile web - unifying Apple's 'AR Quick Look' method and Google's 'Scene-Viewer' method under one shared code method. 
 
 - Example (short-tag method): <a href="https://realityscript.io/example-short.html" target="_blank">Demo</a>
 
 - Example (full-tag method): <a href="https://realityscript.io/example-full.html" target="_blank">Demo</a>
 
-- Example (iOS usage with and without Model-Viewer preview): <a href="https://realityscript.io/example-ios-mixed.html" target="_blank">Demo</a>
+- Example (Usage with and without Model-Viewer preview): <a href="https://realityscript.io/example-ios-mixed.html" target="_blank">Demo</a>
 
 
 ## Description 
 
-The goal of RealityScript is to unify the intersection of common features, shared by both Apple’s ARKit web API, ‘AR Quick Look’, and Google’s ARCore web API, ‘Model-Viewer/Scene-Viewer’ under one code protocol instead of using two separate components and two different sets of attribute rules. 
+The goal of RealityScript is to unify the intersection of common features, shared by both Apple’s ARKit web API, ‘AR Quick Look’, and Google’s ARCore web API, ‘Scene-Viewer’ under one code protocol instead of using two separate components and two different sets of attribute rules. 
 
 RealityScript introduces the ‘Reality-Tag’ web component, as a single cross-platform solution for using both the native iOS and native Android, Augmented Reality frameworks on the mobile web. 
 
@@ -161,14 +161,12 @@ Without an ARKit or ARCore enabled device, RealityScript will not be able to pre
 
 I'd like to start this section by pointing out that RealityScript is an open-source project with an 'Augmented Reality first' focus on native Web-AR and can not be compared directly with Model-Viewer, which has a similar but different goal. With that in mind, RealityScript's default attributes have, by design, the explicit consideration of being 'Augmented Reality first'.
 
-RealityScript actually makes good use of Model-Viewer when the user scenario requires it - and currently for all Android usage, for which RealityScript currently relies on it. Model-Viewer is an excellent component and the team do a great job with the project and the community, for which I am particularly grateful for.. thank you! 
-
 RealityScript offers several unique features including a 'short-tag', one-line-of-code implementation for simple embedding of native AR on mobile web pages. 
 
 In addition, RealityScript supports extended functionality with a few (currently small with more in the works) overlay-display templates. 
 These currently include: Styles for box display design, clear user instructions and an editorial note. 
 
-For iOS usage, RealityScript does not require the Model-Viewer component or it's library unless the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
+RealityScript can use the Model-Viewer component if the developer chooses the option of displaying a 3D preview instead of an image before a user enters AR. 
 
 RealityScript's development roadmap includes better support for .reality files, more functionality for AR Quick Look and further additions to the feature-set of overlay-displays and design options - with full consideration to the mission of being an 'Augmented Reality first' component. 
 
