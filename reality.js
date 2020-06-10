@@ -3,7 +3,7 @@
 	Documentation source: https://realityscript.io 
 	@author jason.io - Created on 25/04/2020 
 	Released under the MIT license 
-*/
+*/ 
 
 // String variables (default: English)
 var realityTitle = "Tap <strong>image</strong> for <strong>AR</strong>";
