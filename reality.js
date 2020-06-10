@@ -479,18 +479,18 @@ function setup(){
 		realityElementEditorialContainer.setAttribute('style', "position: relative; width: calc(100%); height:calc("+boxHeight+" - 66px); overflow: hidden; margin-top:0px; display: block; user-select: none; pointer-events: none; background-color:rgba(0,0,0,0.0)");
 		
 		var realityElementEditorialLable = document.createElement('div');
-		realityElementEditorialLable.setAttribute('style', "width:70px; border:0px solid white; margin-top:20px; margin-left:20px; display: block; border-radius:10px; padding:4px; font-size:7px; line-height:11px; background-color:rgba(0,0,0,0.3); font-family: Arial, Helvetica, sans-serif;");
+		realityElementEditorialLable.setAttribute('style', "width:70px; border:0px solid white; margin-top:20px; margin-left:20px; display: block; border-radius:10px; padding:4px; font-size:7px; line-height:11px; background-color:rgba(0,0,0,0.3); color:rgba(255,255,255,1.0); text-align:center; font-family: Arial, Helvetica, sans-serif;");
 		realityElementEditorialLable.innerText = realityEditorialCopy;
 		
 		var realityElementTitleContainer = document.createElement('div');
 		realityElementTitleContainer.setAttribute('style', "position: relative; width: calc(100%); height:200px; overflow: hidden; margin-top:0px; display: block; user-select: none; pointer-events: none; background-color:rgba(0,0,0,0.0)");
 		
 		var realityElementTitleLabel = document.createElement('div');
-		realityElementTitleLabel.setAttribute('style', "border:0px solid white; margin-top:0px; margin-left:0px; display: block; border-radius:0px; padding-top:8px; padding-bottom:4px; font-size:15px; background-color:rgba(0,0,0,0.0); text-shadow: 0 0 4px #000; color:white; font-family: Arial, Helvetica, sans-serif;");
+		realityElementTitleLabel.setAttribute('style', "border:0px solid white; margin-top:0px; margin-left:0px; display: block; border-radius:0px; padding-top:8px; padding-bottom:4px; font-size:15px; background-color:rgba(0,0,0,0.0); text-shadow: 0 0 4px #000; color:rgba(255,255,255,1.0); text-align:center; font-family: Arial, Helvetica, sans-serif;");
 		realityElementTitleLabel.innerHTML = realityObject.title;
 		
 		var realityElementSubtitleLabel = document.createElement('div');
-		realityElementSubtitleLabel.setAttribute('style', "border:0px solid white; margin-top:0px; margin-left:0px; display: block; border-radius:0px; padding-top:4px; padding-bottom:8px; font-size:11px; background-color:rgba(0,0,0,0.0); text-shadow: 0 0 4px #000; color:white; font-family: Arial, Helvetica, sans-serif;");
+		realityElementSubtitleLabel.setAttribute('style', "border:0px solid white; margin-top:0px; margin-left:0px; display: block; border-radius:0px; padding-top:4px; padding-bottom:8px; font-size:11px; background-color:rgba(0,0,0,0.0); text-shadow: 0 0 4px #000; color:rgba(255,255,255,1.0); text-align:center; font-family: Arial, Helvetica, sans-serif;");
 		realityElementSubtitleLabel.innerHTML = realityObject.subtitle;
 		
 		// Configure overlay optionals
